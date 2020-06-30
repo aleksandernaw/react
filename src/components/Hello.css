@@ -1,0 +1,29 @@
+#haslo{
+    color: blue;
+    text-align: center;
+    margin-left: 692px;
+    
+
+}
+input{
+    padding:5px;
+    width: 200px;
+    margin-left:650px;
+    margin-right:auto;
+    text-align: center;
+    margin-top: 10px ;
+    -webkit-box-shadow: 5px 3px 5px 0px  rgba(0,0,0,0.44); 
+    box-shadow: 5px 3px 5px 0px  rgba(0,0,0,0.44); 
+    border: lightblue;
+    
+    
+    
+}
+.valid{
+    background-color:#7acccf;
+
+}
+.invalid{
+    background-color: red;
+
+}
