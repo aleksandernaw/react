@@ -7,7 +7,7 @@ import App from '../App';
 export const Hello = () => {
   const [value, setValue] = useState('') 
   const [username, setUsername ] = useState('')
-  
+  const [loggedIn, isLoggedIn] = useState(false);
 
   const minLength = 4
   const maxLength = 10
@@ -26,29 +26,34 @@ export const Hello = () => {
     }
   }
   
-  const conditionalText: string= isPasswordCorrect(value, password) ? 'poprawne hasło' : 'niepoprawne hasło';
   const inputColor = isValueLengthInRange(valueLength, minLength, maxLength) ? 'valid' : 'invalid';
+  
+  const _handleKeyDown = (e: any) => {
+    if (e.key === 'Enter') {
+      isPasswordCorrect(value, password) ? isLoggedIn(true) : isLoggedIn(false);
+    }
+  }
 
   const inputForPassword = (
     <div>
-        <input
-        value={username}
-        placeholder ="wpisz nazwe użytkownika"
-        onChange={e => setUsername(e.target.value)}>
-            
-        </input>
+      <input
+      value={username}
+      placeholder ="wpisz nazwe użytkownika"
+      onChange={e => setUsername(e.target.value)}>
+      </input>
       <input 
         className={inputColor}
         type="password"
         placeholder="wpisz hasło"
         value={value}
-        onChange={e => setValue(e.target.value)}>
+        onChange={e => setValue(e.target.value)}
+        onKeyDown={_handleKeyDown}>
       </input>
     </div>
   )
 
   return (
-    isPasswordCorrect(value, password) ? <App name={username}/> : inputForPassword
+    loggedIn ? <App name={username}/> : inputForPassword
 )
 
 }
