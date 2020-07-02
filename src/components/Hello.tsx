@@ -6,11 +6,13 @@ import './Hello.css';
 import App from '../App';
 export const Hello = () => {
   const [value, setValue] = useState('') 
+  const [username, setUsername ] = useState('')
   
+
   const minLength = 4
   const maxLength = 10
   const valueLength: number = value.length;
-  const username = 'Olsen';
+  
   const password: string = 'olek123'
   const isPasswordCorrect = (value: string, password: string) => {
     return value === password;
@@ -29,6 +31,12 @@ export const Hello = () => {
 
   const inputForPassword = (
     <div>
+        <input
+        value={username}
+        placeholder ="wpisz nazwe użytkownika"
+        onChange={e => setUsername(e.target.value)}>
+            
+        </input>
       <input 
         className={inputColor}
         type="password"
